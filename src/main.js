@@ -24,5 +24,7 @@ export default async ({ req, res, log, error }) => {
     }
 
     // Send a response
+    return res.empty();
+
     res.send('Subscription request processed.');
 };
