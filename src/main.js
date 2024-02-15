@@ -10,9 +10,9 @@ export default async ({ req, res, log, error }) => {
 
     try {
         // Subscribe to events
-        client.subscribe(['databases.65c9f1dab1c765f9541e.collections.65c9f1e49ee8dcddbe37.documents.*.update'], response => {
+        client.subscribe(['databases.*.collections.65c9f1e49ee8dcddbe37.documents.*.update'], response => {
             // Callback will be executed on all account events.
-            log('Received event:', response);
+            log('Received event:'+ response);
             // Handle the event logic here
         });
 
