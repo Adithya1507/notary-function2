@@ -3,31 +3,26 @@ import { Client } from 'node-appwrite';
 // This is your Appwrite function
 // It's executed each time we get a request
 export default async ({ req, res, log, error }) => {
-  // Why not try the Appwrite SDK?
-  //
-  // const client = new Client()
-  //    .setEndpoint('https://cloud.appwrite.io/v1')
-  //    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-  //    .setKey(process.env.APPWRITE_API_KEY);
+    // Initialize Appwrite client
+    const client = new Client()
+        .setEndpoint('https://cloud.appwrite.io/v1')
+        .setProject('65c9f0c6dcb3c4b99e70');
 
-  // You can log messages to the console
-  log('Hello, Logs!');
+    try {
+        // Subscribe to events
+        client.subscribe(['databases.*.collections.65c9f1e49ee8dcddbe37.documents.*', 'files'], response => {
+            // Callback will be executed on all account events.
+            log('Received event:', response);
+            // Handle the event logic here
+        });
 
-  // If something goes wrong, log an error
-  error('Hello, Errors!');
+        // Log success message
+        log('Subscription to Appwrite Realtime events successful.');
+    } catch (err) {
+        // Log error if subscription fails
+        error('Error subscribing to Appwrite Realtime events:', err);
+    }
 
-  // The `req` object contains the request data
-  if (req.method === 'GET') {
-    // Send a response with the res object helpers
-    // `res.send()` dispatches a string back to the client
-    return res.send('Hello, World!');
-  }
-
-  // `res.json()` is a handy helper for sending JSON
-  return res.json({
-    motto: 'Build like a team of hundreds_',
-    learn: 'https://appwrite.io/docs',
-    connect: 'https://appwrite.io/discord',
-    getInspired: 'https://builtwith.appwrite.io',
-  });
+    // Send a response
+    res.send('Subscription request processed.');
 };
