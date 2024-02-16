@@ -1,4 +1,4 @@
-import { Client } from "appwrite";
+import { Client } from "node-appwrite";
 
 const client = new Client()
     .setEndpoint('https://cloud.appwrite.io/v1')
