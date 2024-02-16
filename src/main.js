@@ -1,4 +1,4 @@
-//import { Realtime } from "node-appwrite";
+import { Client } from "node-appwrite";
 import pkg from 'node-appwrite';
 const { Realtime } = pkg;
 
