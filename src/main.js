@@ -1,5 +1,6 @@
-import { Realtime } from "node-appwrite";
-
+//import { Realtime } from "node-appwrite";
+import pkg from 'node-appwrite';
+const { Realtime } = pkg;
 
 
 const externalClient = new Client();
