@@ -1,4 +1,4 @@
-import { Realtime } from "node-appwrite";
+import { Realtime } from "appwrite";
 
 const realtime = new Realtime()
     .setEndpoint('https://cloud.appwrite.io/v1');
